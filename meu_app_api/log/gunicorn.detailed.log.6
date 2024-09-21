@@ -1,0 +1,80 @@
+[2024-09-19 19:06:16,301] ERROR log_exception() L838  Exception on /beer [GET] - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py L838 
+Traceback (most recent call last):
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 1496, in __getattr__
+    return getattr(self.comparator, key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Comparator' object has no attribute 'upper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\attributes.py", line 472, in __getattr__
+    return getattr(self.comparator, key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1328, in __getattr__
+    return self._fallback_getattr(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\properties.py", line 474, in _fallback_getattr
+    return getattr(self.__clause_element__(), key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 1498, in __getattr__
+    raise AttributeError(
+AttributeError: Neither 'AnnotatedColumn' object nor 'Comparator' object has an attribute 'upper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_openapi3\scaffold.py", line 117, in view_func
+    response = func(**func_kwargs)
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\OneDrive\Área de Trabalho\paula\mvp\meu_app_api\app.py", line 99, in get_beer
+    beer = session.query(Beer).filter(Beer.name == name_beer).first()
+                                      ^^^^^^^^^^^^^^^
+  File "C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\attributes.py", line 474, in __getattr__
+    raise AttributeError(
+AttributeError: Neither 'InstrumentedAttribute' object nor 'Comparator' object associated with Beer.name has an attribute 'upper'
+[2024-09-19 19:06:16,346] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:06:16] "[35m[1mGET /beer?name=Teste HTTP/1.1[0m" 500 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:01,822] INFO _log() L97   [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.104:5000 - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:01,822] INFO _log() L97   [33mPress CTRL+C to quit[0m - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:03,307] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:03] "GET /openapi/swagger HTTP/1.1" 200 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:03,571] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:03] "[36mGET /openapi/static/js/swagger-ui-bundle.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:03,571] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:03] "[36mGET /openapi/static/css/swagger-ui.css HTTP/1.1[0m" 304 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:03,590] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:03] "[36mGET /openapi/static/js/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:03,824] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:03] "GET /openapi/openapi.json HTTP/1.1" 200 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:03,841] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:03] "[36mGET /openapi/static/images/swagger.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:13,438] WARNING get_beer() L104  Erro ao buscar cerveja 'Teste', Cerveja não encontrada na base :/ - call_trace=C:\Users\ina_m\OneDrive\Área de Trabalho\paula\mvp\meu_app_api\app.py L104 
+[2024-09-19 19:07:13,438] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:13] "[33mGET /beer?name=Teste HTTP/1.1[0m" 404 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:39,644] INFO _log() L97   [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.104:5000 - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:39,653] INFO _log() L97   [33mPress CTRL+C to quit[0m - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:41,747] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:41] "GET /openapi/swagger HTTP/1.1" 200 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:41,887] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:41] "[36mGET /openapi/static/js/swagger-ui-bundle.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:41,901] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:41] "[36mGET /openapi/static/js/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:41,905] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:41] "[36mGET /openapi/static/css/swagger-ui.css HTTP/1.1[0m" 304 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:42,052] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:42] "GET /openapi/openapi.json HTTP/1.1" 200 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:42,052] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:42] "[36mGET /openapi/static/images/swagger.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:48,185] WARNING get_beer() L104  Erro ao buscar cerveja 'Teste', Cerveja não encontrada na base :/ - call_trace=C:\Users\ina_m\OneDrive\Área de Trabalho\paula\mvp\meu_app_api\app.py L104 
+[2024-09-19 19:07:48,185] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:48] "[33mGET /beer?name=Teste HTTP/1.1[0m" 404 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:07:55,316] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:07:55] "GET /beer?name=Heineken HTTP/1.1" 200 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-09-19 19:08:06,232] WARNING get_beer() L104  Erro ao buscar cerveja 'HEINEKEN', Cerveja não encontrada na base :/ - call_trace=C:\Users\ina_m\OneDrive\Área de Trabalho\paula\mvp\meu_app_api\app.py L104 
+[2024-09-19 19:08:06,233] INFO _log() L97   127.0.0.1 - - [19/Sep/2024 19:08:06] "[33mGET /beer?name=HEINEKEN HTTP/1.1[0m" 404 - - call_trace=C:\Users\ina_m\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py L97  
